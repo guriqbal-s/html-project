@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Guriqbal Singh | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1120;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #e5e7eb;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+            background:
+                radial-gradient(circle at top right, #164e63 0%, transparent 35%),
+                radial-gradient(circle at bottom left, #172554 0%, transparent 35%),
+                #0b1120;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        .buttons {
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            margin: 5px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #38bdf8;
+            color: #082f49;
+        }
+
+        .primary:hover {
+            background: #7dd3fc;
+            transform: translateY(-3px);
+        }
+
+        .secondary {
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .secondary:hover {
+            background: #38bdf8;
+            color: #082f49;
+        }
+
+        /* General Sections */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .section-title span {
+            color: #38bdf8;
+        }
+
+        /* About */
+        .about {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #1e293b;
+            padding: 30px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+        }
+
+        .card h3 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #94a3b8;
+        }
+
+        /* Skills */
+        .skills {
+            background: #0f172a;
+        }
+
+        .skill {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: #1e293b;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #0284c7, #38bdf8);
+            border-radius: 20px;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: #94a3b8;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #070c17;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+                font-size: 14px;
+            }
+
+            .hero h2 {
+                font-size: 22px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">GS.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+
+            <h1>Hi, I'm <span>Guriqbal Singh</span></h1>
+
+            <h2>M.Com Graduate & Cloud Computing Learner</h2>
+
+            <p>
+                I am a commerce graduate with an M.Com degree,
+                currently exploring the world of cloud computing and
+                building my skills in modern technology.
+            </p>
+
+            <div class="buttons">
+                <a href="#about" class="btn primary">About Me</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about">
+
+        <h2 class="section-title">About <span>Me</span></h2>
+
+        <div class="about">
+            <p>
+                Hello! I'm Guriqbal Singh. I have completed my
+                Master of Commerce (M.Com) and I'm currently learning
+                cloud computing.
+            </p>
+
+            <br>
+
+            <p>
+                My goal is to combine my academic background with
+                technical knowledge and develop a strong understanding
+                of cloud technologies, infrastructure and modern IT
+                solutions.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- Education Section -->
+    <section id="education">
+
+        <h2 class="section-title">My <span>Education</span></h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Master of Commerce</h3>
+                <p>
+                    M.Com graduate with an academic background
+                    in commerce and business.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Cloud Computing</h3>
+                <p>
+                    Currently learning cloud computing and
+                    developing technical skills for a career
+                    in the technology field.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+
+        <h2 class="section-title">My <span>Skills</span></h2>
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>Cloud Computing</span>
+                <span>Learning</span>
+            </div>
+
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 60%;"></div>
+            </div>
+
+        </div>
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>Computer Skills</span>
+                <span>70%</span>
+            </div>
+
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 70%;"></div>
+            </div>
+
+        </div>
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>Commerce & Business</span>
+                <span>85%</span>
+            </div>
+
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+            </div>
+
+        </div>
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>Problem Solving</span>
+                <span>75%</span>
+            </div>
+
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 75%;"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Learning Journey -->
+    <section>
+
+        <h2 class="section-title">My <span>Learning Journey</span></h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>01. Commerce</h3>
+                <p>
+                    Built a foundation in commerce, business,
+                    finance and management through my academic journey.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>02. Technology</h3>
+                <p>
+                    Started developing an interest in technology
+                    and exploring different areas of IT.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>03. Cloud Computing</h3>
+                <p>
+                    Currently learning cloud computing and
+                    exploring how modern applications and services
+                    are hosted in the cloud.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+
+        <p>Interested in connecting with me?</p>
+
+        <p>
+            📧 Email: your-email@example.com
+        </p>
+
+        <div class="buttons">
+            <a href="mailto:your-email@example.com"
+               class="btn primary">
+                Send Email
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © 2026 Guriqbal Singh. All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>

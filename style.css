@@ -1,0 +1,95 @@
+/* Soothing Warm-Charcoal, Champagne Sand & Muted Sage Aesthetic */
+
+:root {
+  --bg-main: #0e1014;
+  --bg-card: #15171d;
+  --bg-elevated: #1b1e25;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --accent-sand: #d4b278;
+  --accent-sage: #8fae96;
+  --text-primary: #f2f0eb;
+  --text-secondary: #9da1aa;
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e1014;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222630;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2e3340;
+}
+
+/* Terminal Screen Scrollbar */
+#terminal-screen::-webkit-scrollbar {
+  width: 6px;
+}
+
+#terminal-screen::-webkit-scrollbar-track {
+  background: #12141a;
+}
+
+#terminal-screen::-webkit-scrollbar-thumb {
+  background: #262a35;
+  border-radius: 3px;
+}
+
+/* Terminal Cursor Simulation */
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background-color: var(--accent-sand);
+  vertical-align: middle;
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Glass Card Highlights */
+.glass-panel {
+  background: rgba(21, 23, 29, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Subtle soothing glow hover */
+.glow-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card:hover {
+  box-shadow: 0 0 25px -5px rgba(212, 178, 120, 0.08);
+  border-color: rgba(212, 178, 120, 0.35);
+}
+
+/* Command highlight badge inside terminal */
+.terminal-cmd {
+  color: #d4b278;
+  font-weight: 600;
+}
+
+.terminal-success {
+  color: #8fae96;
+}
+
+.terminal-muted {
+  color: #6d7280;
+}

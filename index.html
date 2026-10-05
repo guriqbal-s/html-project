@@ -1,488 +1,770 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guriqbal Singh | Aspiring Cloud & DevOps Engineer</title>
+  <meta name="description" content="Portfolio of Guriqbal Singh - Commerce graduate (B.Com & M.Com) on an intensive journey into Linux, Bash scripting, Cloud Computing, and DevOps." />
 
-    <title>Guriqbal Singh | Portfolio</title>
+  <!-- Google Fonts: Plus Jakarta Sans for UI + JetBrains Mono for Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0b1120;
-            color: #e5e7eb;
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(11, 17, 32, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid #1e293b;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #38bdf8;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            color: #e5e7eb;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #38bdf8;
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px 50px;
-            background:
-                radial-gradient(circle at top right, #164e63 0%, transparent 35%),
-                radial-gradient(circle at bottom left, #172554 0%, transparent 35%),
-                #0b1120;
-        }
-
-        .hero-content {
-            max-width: 850px;
-        }
-
-        .hero h1 {
-            font-size: clamp(45px, 8vw, 80px);
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .hero h1 span {
-            color: #38bdf8;
-        }
-
-        .hero h2 {
-            font-size: 28px;
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #cbd5e1;
-            font-size: 18px;
-        }
-
-        .buttons {
-            margin-top: 35px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 25px;
-            margin: 5px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .primary {
-            background: #38bdf8;
-            color: #082f49;
-        }
-
-        .primary:hover {
-            background: #7dd3fc;
-            transform: translateY(-3px);
-        }
-
-        .secondary {
-            border: 1px solid #38bdf8;
-            color: #38bdf8;
-        }
-
-        .secondary:hover {
-            background: #38bdf8;
-            color: #082f49;
-        }
-
-        /* General Sections */
-        section {
-            padding: 90px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 38px;
-            margin-bottom: 50px;
-            color: white;
-        }
-
-        .section-title span {
-            color: #38bdf8;
-        }
-
-        /* About */
-        .about {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-            color: #cbd5e1;
-            font-size: 18px;
-        }
-
-        /* Cards */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .card {
-            background: #111827;
-            border: 1px solid #1e293b;
-            padding: 30px;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #38bdf8;
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
-        }
-
-        .card h3 {
-            color: #38bdf8;
-            margin-bottom: 12px;
-            font-size: 22px;
-        }
-
-        .card p {
-            color: #94a3b8;
-        }
-
-        /* Skills */
-        .skills {
-            background: #0f172a;
-        }
-
-        .skill {
-            max-width: 900px;
-            margin: 20px auto;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .skill-bar {
-            height: 10px;
-            background: #1e293b;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #0284c7, #38bdf8);
-            border-radius: 20px;
-        }
-
-        /* Contact */
-        .contact {
-            text-align: center;
-        }
-
-        .contact p {
-            color: #94a3b8;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #070c17;
-            color: #64748b;
-            border-top: 1px solid #1e293b;
-        }
-
-        /* Mobile */
-        @media (max-width: 700px) {
-            nav {
-                padding: 15px 5%;
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            // Soothing Warm Charcoal / Mineral Slate
+            charcoal: {
+              950: '#0e1014', // Page Background
+              900: '#15171e', // Card Surface
+              850: '#1b1e26', // Elevated Card / Hover
+              800: '#232732', // Subtle Borders
+              700: '#323746', // Secondary Borders
+            },
+            // Classy Warm Champagne Sand
+            sand: {
+              100: '#f8f4ec',
+              200: '#eee3cf',
+              300: '#e3cfac',
+              400: '#d4b278', // Primary Warm Accent
+              500: '#c29b5c',
+              600: '#a67d40',
+            },
+            // Soothing Muted Sage / Mineral Green
+            sage: {
+              100: '#eaf1ec',
+              300: '#b4cfbc',
+              400: '#8fae96', // Secondary Calming Accent
+              500: '#6f9277',
+            },
+            // Soft warm muted text
+            mineral: {
+              100: '#f4f3ef',
+              200: '#e4e2dc',
+              300: '#c5c3bc',
+              400: '#9b9d99',
+              500: '#737578',
             }
-
-            nav ul {
-                gap: 12px;
-                font-size: 14px;
-            }
-
-            .hero h2 {
-                font-size: 22px;
-            }
-
-            section {
-                padding: 70px 5%;
-            }
-
-            .section-title {
-                font-size: 30px;
-            }
+          }
         }
-    </style>
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="bg-charcoal-950 text-mineral-200 antialiased selection:bg-sand-400 selection:text-charcoal-950 transition-colors duration-300 font-sans">
+  
+  <!-- Subtle Soothing Ambient Warmth -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-[30rem] h-[30rem] bg-sand-400/[0.04] rounded-full blur-[100px]"></div>
+    <div class="absolute top-1/3 -right-40 w-[28rem] h-[28rem] bg-sage-400/[0.04] rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-10 left-1/3 w-[30rem] h-[30rem] bg-sand-500/[0.03] rounded-full blur-[110px]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4.5rem_4.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+  </div>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">GS.</div>
+  <!-- Header / Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-charcoal-950/80 border-b border-charcoal-800/60 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-lg bg-charcoal-900 border border-charcoal-800 flex items-center justify-center font-mono font-bold text-sand-400 text-sm shadow-sm group-hover:border-sand-400/40 transition-all">
+          GS
+        </div>
+        <div>
+          <span class="font-semibold text-sm tracking-tight text-mineral-100 block">Guriqbal Singh</span>
+          <span class="text-xs font-mono text-sand-400/90 block -mt-1">journey::week_3</span>
+        </div>
+      </a>
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-mineral-400">
+        <a href="#about" class="hover:text-sand-300 transition-colors">My Story</a>
+        <a href="#skills" class="hover:text-sand-300 transition-colors">Skills &amp; Roadmap</a>
+        <a href="#terminal" class="hover:text-sand-300 transition-colors">Bash Simulator</a>
+        <a href="#projects" class="hover:text-sand-300 transition-colors">Hands-on Scripts</a>
+        <a href="#journey" class="hover:text-sand-300 transition-colors">Weekly Tracker</a>
+        <a href="#contact" class="hover:text-sand-300 transition-colors">Contact</a>
+      </nav>
 
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/guriqbal-s" target="_blank" rel="noopener noreferrer" 
+           class="p-2 text-mineral-400 hover:text-sand-300 rounded-lg hover:bg-charcoal-900 transition-colors" title="GitHub Profile">
+          <i data-lucide="github" class="w-4 h-4"></i>
+        </a>
+        <a href="mailto:guriqbalsinghbal@outlook.com"
+           class="p-2 text-mineral-400 hover:text-sand-300 rounded-lg hover:bg-charcoal-900 transition-colors" title="Send Email">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+        </a>
+        
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-sand-400 text-charcoal-950 hover:bg-sand-300 shadow-sm transition-all hover:scale-[1.02]">
+          <span>Connect With Me</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
 
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-mineral-400 hover:text-sand-300 rounded-lg focus:outline-none">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-charcoal-900/95 border-b border-charcoal-800 px-6 py-5 space-y-4">
+      <a href="#about" class="block text-mineral-300 hover:text-sand-300 font-medium mobile-link">My Story &amp; Transition</a>
+      <a href="#skills" class="block text-mineral-300 hover:text-sand-300 font-medium mobile-link">Skills &amp; Roadmap</a>
+      <a href="#terminal" class="block text-mineral-300 hover:text-sand-300 font-medium mobile-link">Bash Simulator</a>
+      <a href="#projects" class="block text-mineral-300 hover:text-sand-300 font-medium mobile-link">Hands-on Scripts &amp; Labs</a>
+      <a href="#journey" class="block text-mineral-300 hover:text-sand-300 font-medium mobile-link">Weekly Progress Tracker</a>
+      <a href="#contact" class="block text-mineral-300 hover:text-sand-300 font-medium mobile-link">Contact</a>
+      <div class="pt-3 border-t border-charcoal-800 flex gap-4">
+        <a href="https://github.com/guriqbal-s" target="_blank" class="text-xs flex items-center gap-1.5 text-sand-400 font-mono">
+          <i data-lucide="github" class="w-4 h-4"></i> github.com/guriqbal-s
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-20">
+    
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
+    <section id="hero" class="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-4xl mx-auto text-center space-y-8">
+        
+        <!-- Live Learning Status Pill -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-sand-400/25 bg-charcoal-900/80 text-sand-300 text-xs sm:text-sm font-mono">
+          <span class="w-2 h-2 rounded-full bg-sage-400 animate-pulse"></span>
+          <span>Week 3 &bull; Linux, Bash &amp; Cloud Journey &bull; B.Com &amp; M.Com</span>
+        </div>
 
-            <h1>Hi, I'm <span>Guriqbal Singh</span></h1>
+        <!-- Main Headline -->
+        <div class="space-y-4">
+          <h1 class="text-4xl sm:text-6xl font-semibold tracking-tight text-mineral-100 leading-tight">
+            Building Strong <span class="text-sand-400">Linux &amp; Cloud</span> Foundations.
+          </h1>
+          <p class="max-w-2xl mx-auto text-base sm:text-lg text-mineral-400 font-normal leading-relaxed">
+            Hi, I'm <strong class="text-mineral-100 font-semibold">Guriqbal Singh</strong>. I hold a B.Com and M.Com degree, and I am in the foundation phase of my Cloud &amp; DevOps journey—mastering <span class="text-sand-300 font-mono">Linux administration</span>, <span class="text-sand-300 font-mono">Bash scripting</span>, and core AWS architecture.
+          </p>
+        </div>
 
-            <h2>M.Com Graduate & Cloud Computing Learner</h2>
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-3.5 pt-2">
+          <a href="#projects" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-sand-400 hover:bg-sand-300 text-charcoal-950 font-semibold text-sm transition-all transform hover:-translate-y-0.5">
+            <i data-lucide="code-2" class="w-4 h-4"></i>
+            <span>View Bash Scripts</span>
+          </a>
+          <a href="#terminal" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-charcoal-900 border border-charcoal-800 hover:border-charcoal-700 text-mineral-200 font-medium text-sm transition-all transform hover:-translate-y-0.5">
+            <i data-lucide="terminal" class="w-4 h-4 text-sand-400"></i>
+            <span>Run Bash Simulator</span>
+          </a>
+          <a href="https://github.com/guriqbal-s" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-charcoal-900/60 border border-charcoal-800 text-mineral-400 hover:text-mineral-100 transition-all text-sm">
+            <i data-lucide="github" class="w-4 h-4"></i>
+            <span>GitHub Profile</span>
+          </a>
+        </div>
 
-            <p>
-                I am a commerce graduate with an M.Com degree,
-                currently exploring the world of cloud computing and
-                building my skills in modern technology.
+        <!-- Metric Badges -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 border-t border-charcoal-800/60 max-w-3xl mx-auto">
+          <div class="p-4 rounded-xl bg-charcoal-900/40 border border-charcoal-800/60 text-left">
+            <div class="text-xl font-bold text-sand-400 font-mono">Day 21+</div>
+            <div class="text-xs text-mineral-400 mt-1">Daily Hands-on Labs</div>
+          </div>
+          <div class="p-4 rounded-xl bg-charcoal-900/40 border border-charcoal-800/60 text-left">
+            <div class="text-xl font-bold text-sage-400 font-mono">Linux &amp; Bash</div>
+            <div class="text-xs text-mineral-400 mt-1">Current Active Focus</div>
+          </div>
+          <div class="p-4 rounded-xl bg-charcoal-900/40 border border-charcoal-800/60 text-left">
+            <div class="text-xl font-bold text-sand-300 font-mono">AWS Basics</div>
+            <div class="text-xs text-mineral-400 mt-1">In-Progress Studies</div>
+          </div>
+          <div class="p-4 rounded-xl bg-charcoal-900/40 border border-charcoal-800/60 text-left">
+            <div class="text-xl font-bold text-mineral-200 font-mono">B.Com / M.Com</div>
+            <div class="text-xs text-mineral-400 mt-1">Analytical Foundation</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- My Story & The Transition -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-charcoal-800/60 bg-charcoal-900/20">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+          <div class="text-xs font-mono font-semibold tracking-wider text-sand-400 uppercase">Career Transition</div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-mineral-100">From Balance Sheets to Cloud Infrastructure</h2>
+          <p class="text-mineral-400 text-sm sm:text-base">
+            I believe combining an honest, transparent beginner's mind with professional academic discipline creates lasting engineering excellence.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="p-7 rounded-xl bg-charcoal-900/50 border border-charcoal-800 hover:border-sand-400/40 transition-all glow-card">
+            <div class="w-11 h-11 rounded-lg bg-charcoal-850 border border-charcoal-800 flex items-center justify-center text-sand-400 mb-5">
+              <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-mineral-100 mb-2">Academic Rigor (B.Com + M.Com)</h3>
+            <p class="text-mineral-400 text-sm leading-relaxed">
+              My master's degree built structured problem solving, financial discipline, and patience. I channel that same consistent focus into mastering systems and infrastructure.
             </p>
-
-            <div class="buttons">
-                <a href="#about" class="btn primary">About Me</a>
-                <a href="#contact" class="btn secondary">Contact Me</a>
+            <div class="mt-5 pt-4 border-t border-charcoal-800 flex items-center gap-2 text-xs font-mono text-sand-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-sage-400"></i> Detail-oriented &amp; methodical
             </div>
+          </div>
 
-        </div>
-    </section>
-
-
-    <!-- About Section -->
-    <section id="about">
-
-        <h2 class="section-title">About <span>Me</span></h2>
-
-        <div class="about">
-            <p>
-                Hello! I'm Guriqbal Singh. I have completed my
-                Master of Commerce (M.Com) and I'm currently learning
-                cloud computing.
+          <!-- Card 2 -->
+          <div class="p-7 rounded-xl bg-charcoal-900/50 border border-charcoal-800 hover:border-sand-400/40 transition-all glow-card">
+            <div class="w-11 h-11 rounded-lg bg-charcoal-850 border border-charcoal-800 flex items-center justify-center text-sage-400 mb-5">
+              <i data-lucide="terminal" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-mineral-100 mb-2">Current Focus: Linux &amp; Bash</h3>
+            <p class="text-mineral-400 text-sm leading-relaxed">
+              In Week 3, I am practicing daily on Ubuntu: file permissions (`chmod`, `chown`), process management (`ps`, `top`), shell automation scripts, and Git version control.
             </p>
+            <div class="mt-5 pt-4 border-t border-charcoal-800 flex items-center gap-2 text-xs font-mono text-sand-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-sage-400"></i> Solid OS foundations first
+            </div>
+          </div>
 
-            <br>
-
-            <p>
-                My goal is to combine my academic background with
-                technical knowledge and develop a strong understanding
-                of cloud technologies, infrastructure and modern IT
-                solutions.
+          <!-- Card 3 -->
+          <div class="p-7 rounded-xl bg-charcoal-900/50 border border-charcoal-800 hover:border-sand-400/40 transition-all glow-card">
+            <div class="w-11 h-11 rounded-lg bg-charcoal-850 border border-charcoal-800 flex items-center justify-center text-sand-300 mb-5">
+              <i data-lucide="compass" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-mineral-100 mb-2">The Target: Cloud &amp; FinOps</h3>
+            <p class="text-mineral-400 text-sm leading-relaxed">
+              My target is to become an AWS Cloud Practitioner and Junior DevOps Engineer. Long-term, blending commerce with tech positions me ideally for <strong>FinOps (Cloud Cost Management)</strong>.
             </p>
+            <div class="mt-5 pt-4 border-t border-charcoal-800 flex items-center gap-2 text-xs font-mono text-sand-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-sage-400"></i> Clear roadmap &amp; vision
+            </div>
+          </div>
         </div>
 
+      </div>
     </section>
 
-
-    <!-- Education Section -->
-    <section id="education">
-
-        <h2 class="section-title">My <span>Education</span></h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>Master of Commerce</h3>
-                <p>
-                    M.Com graduate with an academic background
-                    in commerce and business.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Cloud Computing</h3>
-                <p>
-                    Currently learning cloud computing and
-                    developing technical skills for a career
-                    in the technology field.
-                </p>
-            </div>
-
+    <!-- Skills & Transparent Progress Matrix -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-charcoal-800/60">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+          <div class="text-xs font-mono font-semibold tracking-wider text-sand-400 uppercase">Transparent Status</div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-mineral-100">Skills Matrix &amp; Current Progression</h2>
+          <p class="text-mineral-400 text-sm sm:text-base">An honest view of what I know today, what I am learning this week, and what's next.</p>
         </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Column 1: Hands-on Right Now -->
+          <div class="p-6 rounded-xl bg-charcoal-900/40 border border-sage-500/30 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-charcoal-800">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-sage-400"></span>
+                <h3 class="font-semibold text-mineral-100 text-base">Practicing Daily (Week 1–3)</h3>
+              </div>
+              <span class="text-xs font-mono text-sage-400 bg-sage-400/10 px-2 py-0.5 rounded">Active</span>
+            </div>
+            
+            <div class="space-y-2.5 text-sm">
+              <div class="p-3 rounded-lg bg-charcoal-950/70 border border-charcoal-800">
+                <div class="font-medium text-mineral-100 text-xs">Linux Command Line Basics</div>
+                <div class="text-xs text-mineral-400 mt-1">Navigation (`cd`, `ls`), file inspection (`cat`, `grep`, `tail`), pipes &amp; redirection.</div>
+              </div>
+              <div class="p-3 rounded-lg bg-charcoal-950/70 border border-charcoal-800">
+                <div class="font-medium text-mineral-100 text-xs">Bash Shell Scripting</div>
+                <div class="text-xs text-mineral-400 mt-1">Variables, conditionals (`if/else`), loops, arguments, and automation scripts.</div>
+              </div>
+              <div class="p-3 rounded-lg bg-charcoal-950/70 border border-charcoal-800">
+                <div class="font-medium text-mineral-100 text-xs">File Permissions &amp; Ownership</div>
+                <div class="text-xs text-mineral-400 mt-1">Understanding `chmod`, `chown`, user groups, and root privileges (`sudo`).</div>
+              </div>
+              <div class="p-3 rounded-lg bg-charcoal-950/70 border border-charcoal-800">
+                <div class="font-medium text-mineral-100 text-xs">Git &amp; GitHub Fundamentals</div>
+                <div class="text-xs text-mineral-400 mt-1">`git init`, `add`, `commit`, `push`, `branch`, GitHub repository workflows.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Currently Learning -->
+          <div class="p-6 rounded-xl bg-charcoal-900/40 border border-sand-400/30 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-charcoal-800">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-sand-400 animate-pulse"></span>
+                <h3 class="font-semibold text-mineral-100 text-base">Currently Learning (Week 3–5)</h3>
+              </div>
+              <span class="text-xs font-mono text-sand-400 bg-sand-400/10 px-2 py-0.5 rounded">Learning</span>
+            </div>
+            
+            <div class="space-y-2.5 text-sm">
+              <div class="p-3 rounded-lg bg-charcoal-950/70 border border-charcoal-800">
+                <div class="font-medium text-mineral-100 text-xs">Cron Jobs &amp; Scheduled Tasks</div>
+                <div class="text-xs text-mineral-400 mt-1">Writing crontab entries to automate backup scripts and routine system checks.</div>
+              </div>
+              <div class="p-3 rounded-lg bg-charcoal-950/70 border border-charcoal-800">
+                <div class="font-medium text-mineral-100 text-xs">Basic Networking Concepts</div>
+                <div class="text-xs text-mineral-400 mt-1">IP addresses, subnets, ports (80, 443, 22), DNS, and `ping`/`curl`/`netstat`.</div>
+              </div>
+              <div class="p-3 rounded-lg bg-charcoal-950/70 border border-charcoal-800">
+                <div class="font-medium text-mineral-100 text-xs">AWS Cloud Fundamentals (EC2 &amp; S3)</div>
+                <div class="text-xs text-mineral-400 mt-1">Cloud regions, launching free-tier Ubuntu EC2 instance, SSH connection.</div>
+              </div>
+              <div class="p-3 rounded-lg bg-charcoal-950/70 border border-charcoal-800">
+                <div class="font-medium text-mineral-100 text-xs">Package Managers (`apt`)</div>
+                <div class="text-xs text-mineral-400 mt-1">Installing, updating, and managing services (Nginx, curl, git, htop).</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Upcoming on Roadmap -->
+          <div class="p-6 rounded-xl bg-charcoal-900/40 border border-charcoal-800 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-charcoal-800">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-mineral-500"></span>
+                <h3 class="font-semibold text-mineral-100 text-base">Upcoming Next (Weeks 6+)</h3>
+              </div>
+              <span class="text-xs font-mono text-mineral-400 bg-charcoal-800 px-2 py-0.5 rounded">Roadmap</span>
+            </div>
+            
+            <div class="space-y-2.5 text-sm">
+              <div class="p-3 rounded-lg bg-charcoal-950/40 border border-charcoal-800/80 text-mineral-400">
+                <div class="font-medium text-mineral-300 text-xs">Docker &amp; Containerization</div>
+                <div class="text-xs mt-1">Understanding containers, writing simple Dockerfiles, running containerized apps.</div>
+              </div>
+              <div class="p-3 rounded-lg bg-charcoal-950/40 border border-charcoal-800/80 text-mineral-400">
+                <div class="font-medium text-mineral-300 text-xs">CI/CD with GitHub Actions</div>
+                <div class="text-xs mt-1">Creating basic workflow files to test and deploy scripts automatically.</div>
+              </div>
+              <div class="p-3 rounded-lg bg-charcoal-950/40 border border-charcoal-800/80 text-mineral-400">
+                <div class="font-medium text-mineral-300 text-xs">Infrastructure as Code (Terraform)</div>
+                <div class="text-xs mt-1">Learning declarative provisioning for AWS resources instead of manual clicking.</div>
+              </div>
+              <div class="p-3 rounded-lg bg-charcoal-950/40 border border-charcoal-800/80 text-mineral-400">
+                <div class="font-medium text-mineral-300 text-xs">AWS Certified Cloud Practitioner</div>
+                <div class="text-xs mt-1">Official certification milestone to validate foundational knowledge.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
+    <!-- Interactive Bash Terminal Simulator -->
+    <section id="terminal" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-charcoal-800/60 bg-charcoal-950">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-7 gap-4">
+          <div>
+            <div class="text-xs font-mono font-semibold tracking-wider text-sand-400 uppercase">Live Hands-on Simulator</div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-mineral-100 mt-1">Linux Shell Simulator</h2>
+            <p class="text-mineral-400 text-xs sm:text-sm mt-1">Click the command chips or type real Linux commands to inspect my scripts.</p>
+          </div>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-
-        <h2 class="section-title">My <span>Skills</span></h2>
-
-        <div class="skill">
-
-            <div class="skill-name">
-                <span>Cloud Computing</span>
-                <span>Learning</span>
-            </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: 60%;"></div>
-            </div>
-
+          <!-- Quick Command Chips -->
+          <div class="flex flex-wrap gap-2">
+            <button class="cmd-preset text-xs font-mono px-3 py-1 rounded bg-charcoal-900 hover:bg-charcoal-850 text-mineral-300 hover:text-sand-300 border border-charcoal-800 transition-colors" data-cmd="whoami">
+              whoami
+            </button>
+            <button class="cmd-preset text-xs font-mono px-3 py-1 rounded bg-charcoal-900 hover:bg-charcoal-850 text-mineral-300 hover:text-sand-300 border border-charcoal-800 transition-colors" data-cmd="ls -la">
+              ls -la
+            </button>
+            <button class="cmd-preset text-xs font-mono px-3 py-1 rounded bg-charcoal-900 hover:bg-charcoal-850 text-mineral-300 hover:text-sand-300 border border-charcoal-800 transition-colors" data-cmd="bash backup.sh">
+              bash backup.sh
+            </button>
+            <button class="cmd-preset text-xs font-mono px-3 py-1 rounded bg-charcoal-900 hover:bg-charcoal-850 text-mineral-300 hover:text-sand-300 border border-charcoal-800 transition-colors" data-cmd="bash monitor.sh">
+              bash monitor.sh
+            </button>
+            <button class="cmd-preset text-xs font-mono px-3 py-1 rounded bg-charcoal-900 hover:bg-charcoal-850 text-mineral-300 hover:text-sand-300 border border-charcoal-800 transition-colors" data-cmd="cat roadmap.txt">
+              cat roadmap.txt
+            </button>
+          </div>
         </div>
 
-        <div class="skill">
-
-            <div class="skill-name">
-                <span>Computer Skills</span>
-                <span>70%</span>
+        <!-- Terminal Window Container -->
+        <div class="rounded-xl overflow-hidden border border-charcoal-800 bg-[#12141a] shadow-xl">
+          <!-- Terminal Titlebar -->
+          <div class="h-9 bg-charcoal-950 border-b border-charcoal-800 flex items-center justify-between px-4">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-mineral-500/50"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-mineral-500/50"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-mineral-500/50"></span>
             </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: 70%;"></div>
+            <div class="text-xs font-mono text-mineral-400 flex items-center gap-1.5">
+              <i data-lucide="terminal" class="w-3.5 h-3.5 text-sand-400"></i>
+              <span>bash - guriqbal@ubuntu-lab: ~</span>
             </div>
+            <button id="clear-term-btn" class="text-xs font-mono text-mineral-500 hover:text-mineral-300 transition-colors" title="Clear console">
+              clear
+            </button>
+          </div>
 
+          <!-- Terminal Output Area -->
+          <div id="terminal-screen" class="p-5 font-mono text-xs sm:text-sm leading-relaxed text-mineral-300 min-h-[290px] max-h-[420px] overflow-y-auto space-y-3">
+            <div class="text-mineral-500">
+              # Ubuntu 24.04 LTS (GNU/Linux 6.8.0-generic x86_64)
+            </div>
+            <div class="text-mineral-500">
+              # Welcome to Guriqbal Singh's Linux Lab (Week 3 of Cloud &amp; DevOps).
+            </div>
+            <div class="text-mineral-500">
+              # Type <span class="text-sand-400">'help'</span> or click the buttons above to test commands.
+            </div>
+          </div>
+
+          <!-- Terminal Input Row -->
+          <form id="terminal-form" class="bg-charcoal-950/80 border-t border-charcoal-800 px-4 py-2.5 flex items-center gap-2 font-mono text-xs sm:text-sm">
+            <span class="text-sage-400 font-semibold select-none">guriqbal@ubuntu:~$</span>
+            <input id="terminal-input" type="text" autocomplete="off" spellcheck="false"
+                   placeholder="type a command (e.g. bash backup.sh, ls -la, help)..."
+                   class="flex-1 bg-transparent text-sand-300 focus:outline-none placeholder-mineral-500" />
+            <button type="submit" class="text-xs px-2.5 py-1 rounded bg-charcoal-850 text-mineral-300 hover:text-sand-300 border border-charcoal-800 transition-colors">
+              Run
+            </button>
+          </form>
         </div>
 
-        <div class="skill">
-
-            <div class="skill-name">
-                <span>Commerce & Business</span>
-                <span>85%</span>
-            </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: 85%;"></div>
-            </div>
-
-        </div>
-
-        <div class="skill">
-
-            <div class="skill-name">
-                <span>Problem Solving</span>
-                <span>75%</span>
-            </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: 75%;"></div>
-            </div>
-
-        </div>
-
+      </div>
     </section>
 
+    <!-- Hands-on Bash Scripts Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-charcoal-800/60">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <div class="text-xs font-mono font-semibold tracking-wider text-sand-400 uppercase">Proof of Learning</div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-mineral-100 mt-1">Hands-on Linux &amp; Bash Scripts</h2>
+            <p class="text-mineral-400 text-sm mt-1">Practical automation scripts written during my first 3 weeks of hands-on practice.</p>
+          </div>
 
-    <!-- Learning Journey -->
-    <section>
+          <a href="https://github.com/guriqbal-s" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-sand-400 hover:text-sand-300 transition-colors">
+            <span>Explore my scripts on GitHub</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
 
-        <h2 class="section-title">My <span>Learning Journey</span></h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>01. Commerce</h3>
-                <p>
-                    Built a foundation in commerce, business,
-                    finance and management through my academic journey.
-                </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Project 1: Backup Script -->
+          <div class="rounded-xl bg-charcoal-900/50 border border-charcoal-800 overflow-hidden hover:border-sand-400/40 transition-all flex flex-col justify-between group glow-card">
+            <div class="p-6 space-y-3.5">
+              <div class="flex items-center justify-between">
+                <span class="px-2 py-0.5 rounded text-xs font-mono bg-sand-400/10 text-sand-400 border border-sand-400/20">Bash &bull; Automation</span>
+                <a href="https://github.com/guriqbal-s" target="_blank" class="text-mineral-500 hover:text-sand-400 transition-colors" title="GitHub Repo">
+                  <i data-lucide="github" class="w-4 h-4"></i>
+                </a>
+              </div>
+              <h3 class="text-base font-semibold text-mineral-100 group-hover:text-sand-300 transition-colors">Automated Directory Backup &amp; Tar Compression Script</h3>
+              <p class="text-mineral-400 text-xs sm:text-sm leading-relaxed">
+                A Bash script that takes a target directory, compresses it into a timestamped `.tar.gz` archive, verifies file integrity, logs execution to `/var/log/backup.log`, and prunes backups older than 7 days.
+              </p>
+              
+              <div class="pt-2 flex flex-wrap gap-1.5">
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">Bash</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">tar / gzip</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">Cron Jobs</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">Ubuntu</span>
+              </div>
             </div>
 
-            <div class="card">
-                <h3>02. Technology</h3>
-                <p>
-                    Started developing an interest in technology
-                    and exploring different areas of IT.
-                </p>
+            <div class="px-6 py-3.5 bg-charcoal-950/60 border-t border-charcoal-800 flex items-center justify-between text-xs text-mineral-400 font-mono">
+              <span class="flex items-center gap-1.5 text-sage-400">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Tested &amp; Working
+              </span>
+              <a href="https://github.com/guriqbal-s" target="_blank" class="hover:text-sand-300 flex items-center gap-1">
+                View Code <i data-lucide="chevron-right" class="w-3 h-3"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2: System Health Monitor -->
+          <div class="rounded-xl bg-charcoal-900/50 border border-charcoal-800 overflow-hidden hover:border-sand-400/40 transition-all flex flex-col justify-between group glow-card">
+            <div class="p-6 space-y-3.5">
+              <div class="flex items-center justify-between">
+                <span class="px-2 py-0.5 rounded text-xs font-mono bg-sage-400/10 text-sage-400 border border-sage-400/20">Linux &bull; SysAdmin</span>
+                <a href="https://github.com/guriqbal-s" target="_blank" class="text-mineral-500 hover:text-sage-400 transition-colors" title="GitHub Repo">
+                  <i data-lucide="github" class="w-4 h-4"></i>
+                </a>
+              </div>
+              <h3 class="text-base font-semibold text-mineral-100 group-hover:text-sage-300 transition-colors">Server Health &amp; Resource Usage Checker</h3>
+              <p class="text-mineral-400 text-xs sm:text-sm leading-relaxed">
+                An interactive shell script monitoring CPU usage, free memory (`free -m`), root disk space (`df -h`), system uptime, and currently logged-in users with color-coded warning thresholds.
+              </p>
+              
+              <div class="pt-2 flex flex-wrap gap-1.5">
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">Bash</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">awk / sed</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">top</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">Linux CLI</span>
+              </div>
             </div>
 
-            <div class="card">
-                <h3>03. Cloud Computing</h3>
-                <p>
-                    Currently learning cloud computing and
-                    exploring how modern applications and services
-                    are hosted in the cloud.
-                </p>
+            <div class="px-6 py-3.5 bg-charcoal-950/60 border-t border-charcoal-800 flex items-center justify-between text-xs text-mineral-400 font-mono">
+              <span class="flex items-center gap-1.5 text-sand-400">
+                <i data-lucide="activity" class="w-3.5 h-3.5"></i> System Metrics
+              </span>
+              <a href="https://github.com/guriqbal-s" target="_blank" class="hover:text-sand-300 flex items-center gap-1">
+                View Code <i data-lucide="chevron-right" class="w-3 h-3"></i>
+              </a>
             </div>
+          </div>
+
+          <!-- Project 3: User Onboarding Automation -->
+          <div class="rounded-xl bg-charcoal-900/50 border border-charcoal-800 overflow-hidden hover:border-sand-400/40 transition-all flex flex-col justify-between group glow-card">
+            <div class="p-6 space-y-3.5">
+              <div class="flex items-center justify-between">
+                <span class="px-2 py-0.5 rounded text-xs font-mono bg-charcoal-800 text-mineral-300 border border-charcoal-700">Security &bull; Permissions</span>
+                <a href="https://github.com/guriqbal-s" target="_blank" class="text-mineral-500 hover:text-mineral-200 transition-colors" title="GitHub Repo">
+                  <i data-lucide="github" class="w-4 h-4"></i>
+                </a>
+              </div>
+              <h3 class="text-base font-semibold text-mineral-100 group-hover:text-sand-300 transition-colors">Automated Linux User &amp; Permission Manager</h3>
+              <p class="text-mineral-400 text-xs sm:text-sm leading-relaxed">
+                A script that streamlines creating new developer accounts on Ubuntu, creating their home directory, setting shell to `/bin/bash`, adding them to appropriate groups, and configuring permissions.
+              </p>
+              
+              <div class="pt-2 flex flex-wrap gap-1.5">
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">useradd</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">chmod / chown</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">sudoers</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-charcoal-850 text-mineral-300">Bash</span>
+              </div>
+            </div>
+
+            <div class="px-6 py-3.5 bg-charcoal-950/60 border-t border-charcoal-800 flex items-center justify-between text-xs text-mineral-400 font-mono">
+              <span class="flex items-center gap-1.5 text-sage-400">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> SysAdmin Task
+              </span>
+              <a href="https://github.com/guriqbal-s" target="_blank" class="hover:text-sand-300 flex items-center gap-1">
+                View Code <i data-lucide="chevron-right" class="w-3 h-3"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Weekly Learning Journey Section -->
+    <section id="journey" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-charcoal-800/60 bg-charcoal-900/20">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-16 space-y-2">
+          <div class="text-xs font-mono font-semibold tracking-wider text-sand-400 uppercase">Learning In Public</div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-mineral-100">My Weekly Cloud &amp; DevOps Progress</h2>
+          <p class="text-mineral-400 text-sm sm:text-base">Tracking milestones week-by-week as I build my technical capabilities.</p>
+        </div>
+
+        <div class="relative border-l border-charcoal-800 ml-4 sm:ml-28 space-y-10">
+          
+          <!-- Background: B.Com & M.Com -->
+          <div class="relative pl-7 group">
+            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-charcoal-950 border border-sand-400"></div>
+            <div class="hidden sm:block absolute -left-28 top-1 text-xs font-mono text-sand-400 font-medium text-right w-20">
+              Foundation
+            </div>
+            <div class="p-5 rounded-xl bg-charcoal-900/40 border border-charcoal-800">
+              <div class="flex items-center justify-between mb-1.5">
+                <h3 class="text-base font-semibold text-mineral-100">B.Com &amp; M.Com Graduate</h3>
+                <span class="text-xs font-mono text-sage-400 bg-sage-400/10 px-2 py-0.5 rounded">Completed</span>
+              </div>
+              <p class="text-mineral-400 text-xs sm:text-sm leading-relaxed">
+                Graduated with Master of Commerce. Developed deep analytical mindset, business economics understanding, and disciplined work habits.
+              </p>
+            </div>
+          </div>
+
+          <!-- Week 1: Linux CLI -->
+          <div class="relative pl-7 group">
+            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-charcoal-950 border border-sage-400"></div>
+            <div class="hidden sm:block absolute -left-28 top-1 text-xs font-mono text-sage-400 font-medium text-right w-20">
+              Week 1
+            </div>
+            <div class="p-5 rounded-xl bg-charcoal-900/40 border border-charcoal-800">
+              <div class="flex items-center justify-between mb-1.5">
+                <h3 class="text-base font-semibold text-mineral-100">Linux CLI &amp; Terminal Mastery</h3>
+                <span class="text-xs font-mono text-sage-400 bg-sage-400/10 px-2 py-0.5 rounded">Done</span>
+              </div>
+              <p class="text-mineral-400 text-xs sm:text-sm leading-relaxed">
+                Learned Linux terminal fundamentals: directory navigation, file manipulation, pipes, redirection, grep, vi/nano editors, and SSH basics.
+              </p>
+            </div>
+          </div>
+
+          <!-- Week 2: Bash Scripting -->
+          <div class="relative pl-7 group">
+            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-charcoal-950 border border-sage-400"></div>
+            <div class="hidden sm:block absolute -left-28 top-1 text-xs font-mono text-sage-400 font-medium text-right w-20">
+              Week 2
+            </div>
+            <div class="p-5 rounded-xl bg-charcoal-900/40 border border-charcoal-800">
+              <div class="flex items-center justify-between mb-1.5">
+                <h3 class="text-base font-semibold text-mineral-100">Bash Scripting &amp; Git Version Control</h3>
+                <span class="text-xs font-mono text-sage-400 bg-sage-400/10 px-2 py-0.5 rounded">Done</span>
+              </div>
+              <p class="text-mineral-400 text-xs sm:text-sm leading-relaxed">
+                Wrote first automation shell scripts (automated backup, system health monitor), learned variables, conditional checks, loops, and pushing code to GitHub.
+              </p>
+            </div>
+          </div>
+
+          <!-- Week 3: Current -->
+          <div class="relative pl-7 group">
+            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-sand-400"></div>
+            <div class="hidden sm:block absolute -left-28 top-1 text-xs font-mono text-sand-400 font-semibold text-right w-20">
+              Week 3
+            </div>
+            <div class="p-5 rounded-xl bg-charcoal-900/60 border border-sand-400/35 shadow-sm">
+              <div class="flex items-center justify-between mb-1.5">
+                <h3 class="text-base font-semibold text-mineral-100">Cron Jobs, Networking &amp; AWS Introduction</h3>
+                <span class="text-xs font-mono text-sand-400 bg-sand-400/10 px-2 py-0.5 rounded">In Progress</span>
+              </div>
+              <p class="text-mineral-400 text-xs sm:text-sm leading-relaxed">
+                Setting up cron automation, understanding IP addressing, ports, and launching my first AWS Free Tier EC2 instance to configure a simple web server.
+              </p>
+            </div>
+          </div>
+
+          <!-- Upcoming -->
+          <div class="relative pl-7 group opacity-60">
+            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-charcoal-950 border border-mineral-500"></div>
+            <div class="hidden sm:block absolute -left-28 top-1 text-xs font-mono text-mineral-500 font-medium text-right w-20">
+              Weeks 4–8
+            </div>
+            <div class="p-5 rounded-xl bg-charcoal-900/20 border border-charcoal-800">
+              <div class="flex items-center justify-between mb-1.5">
+                <h3 class="text-base font-semibold text-mineral-300">AWS Core Services &amp; Docker Fundamentals</h3>
+                <span class="text-xs font-mono text-mineral-500 bg-charcoal-850 px-2 py-0.5 rounded">Upcoming</span>
+              </div>
+              <p class="text-mineral-400 text-xs sm:text-sm leading-relaxed">
+                Deep diving into AWS (S3, VPC, IAM), preparing for AWS Cloud Practitioner, and starting containerization with Docker.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Connect Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-charcoal-800/60">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="text-center mb-12 space-y-2">
+          <div class="text-xs font-mono font-semibold tracking-wider text-sand-400 uppercase">Let's Connect</div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-mineral-100">Get In Touch</h2>
+          <p class="text-mineral-400 text-sm">
+            I am actively seeking mentorship, study groups, and entry-level Cloud / DevOps / Junior SysAdmin opportunities.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Contact Info Cards -->
+          <div class="space-y-4">
+            
+            <!-- Email Card -->
+            <div class="p-6 rounded-xl bg-charcoal-900/50 border border-charcoal-800 flex items-start gap-4">
+              <div class="p-2.5 rounded-lg bg-sand-400/10 text-sand-400 border border-sand-400/20">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div class="flex-1">
+                <div class="text-xs font-mono text-mineral-400 uppercase tracking-wider">Email Address</div>
+                <a href="mailto:guriqbalsinghbal@outlook.com" class="text-mineral-100 font-medium hover:text-sand-300 transition-colors block mt-1 break-all text-sm">
+                  guriqbalsinghbal@outlook.com
+                </a>
+                <button id="copy-email-btn" class="mt-2 inline-flex items-center gap-1.5 text-xs font-mono text-sand-400 hover:text-sand-300">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span id="copy-email-text">Copy email to clipboard</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- GitHub Card -->
+            <div class="p-6 rounded-xl bg-charcoal-900/50 border border-charcoal-800 flex items-start gap-4">
+              <div class="p-2.5 rounded-lg bg-charcoal-800 text-mineral-200 border border-charcoal-700">
+                <i data-lucide="github" class="w-5 h-5"></i>
+              </div>
+              <div class="flex-1">
+                <div class="text-xs font-mono text-mineral-400 uppercase tracking-wider">GitHub Profile</div>
+                <a href="https://github.com/guriqbal-s" target="_blank" rel="noopener noreferrer" class="text-mineral-100 font-medium hover:text-sand-300 transition-colors block mt-1 text-sm">
+                  github.com/guriqbal-s
+                </a>
+                <span class="text-xs text-mineral-500 mt-1 block">Follow my daily scripts and learning journey</span>
+              </div>
+            </div>
+
+            <!-- Learning Status Indicator -->
+            <div class="p-4 rounded-lg bg-charcoal-900/40 border border-charcoal-800 flex items-center gap-3 text-mineral-300 text-xs sm:text-sm">
+              <span class="w-2 h-2 rounded-full bg-sage-400 animate-pulse"></span>
+              <span>Open to junior trainee roles, internships, and cloud study collaborations!</span>
+            </div>
+          </div>
+
+          <!-- Quick Message Form -->
+          <div class="p-6 rounded-xl bg-charcoal-900/50 border border-charcoal-800">
+            <h3 class="text-base font-semibold text-mineral-100 mb-4">Send a Direct Message</h3>
+            <form id="contact-form" class="space-y-3.5">
+              <div>
+                <label for="name" class="block text-xs font-mono text-mineral-400 mb-1">Your Name</label>
+                <input type="text" id="name" required placeholder="e.g. Mentor or Recruiter Name"
+                       class="w-full px-3.5 py-2 rounded-lg bg-charcoal-950 border border-charcoal-800 text-mineral-100 placeholder-mineral-500 focus:outline-none focus:border-sand-400 text-xs sm:text-sm" />
+              </div>
+
+              <div>
+                <label for="user-email" class="block text-xs font-mono text-mineral-400 mb-1">Your Email</label>
+                <input type="email" id="user-email" required placeholder="name@company.com"
+                       class="w-full px-3.5 py-2 rounded-lg bg-charcoal-950 border border-charcoal-800 text-mineral-100 placeholder-mineral-500 focus:outline-none focus:border-sand-400 text-xs sm:text-sm" />
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-mono text-mineral-400 mb-1">Message</label>
+                <textarea id="message" rows="3" required placeholder="Hi Guriqbal, saw your learning journey and would love to connect..."
+                          class="w-full px-3.5 py-2 rounded-lg bg-charcoal-950 border border-charcoal-800 text-mineral-100 placeholder-mineral-500 focus:outline-none focus:border-sand-400 text-xs sm:text-sm resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-sand-400 hover:bg-sand-300 text-charcoal-950 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                <span>Open Mail Client</span>
+              </button>
+            </form>
+          </div>
 
         </div>
 
+      </div>
     </section>
 
+  </main>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+  <!-- Footer -->
+  <footer class="border-t border-charcoal-800/60 bg-charcoal-950 py-10 px-4 sm:px-6 lg:px-8 text-center text-xs text-mineral-500 font-mono space-y-1.5">
+    <div>Guriqbal Singh &bull; <span class="text-mineral-400">B.Com &amp; M.Com Graduate</span></div>
+    <div>Learning in Public: Linux &bull; Bash Scripting &bull; Cloud Computing &bull; DevOps</div>
+    <div class="pt-2 text-mineral-600">
+      &copy; <span id="year"></span> Guriqbal Singh. Keep learning every single day.
+    </div>
+  </footer>
 
-        <h2 class="section-title">Get In <span>Touch</span></h2>
-
-        <p>Interested in connecting with me?</p>
-
-        <p>
-            📧 Email: your-email@example.com
-        </p>
-
-        <div class="buttons">
-            <a href="mailto:your-email@example.com"
-               class="btn primary">
-                Send Email
-            </a>
-        </div>
-
-    </section>
-
-
-    <!-- Footer -->
-    <footer>
-        <p>
-            © 2026 Guriqbal Singh. All Rights Reserved.
-        </p>
-    </footer>
-
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html>
